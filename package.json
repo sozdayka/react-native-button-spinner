@@ -1,0 +1,36 @@
+{
+  "name": "react-native-button-spinner",
+  "version": "0.0.1",
+
+  "description": "Button spinner",
+  "keywords": [
+    "react-native"
+  ],
+  "author": "Igor Rosliakov",
+  "license": "MIT",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sozdayka/react-native-button-spinner.git"
+  },
+  "dependencies": {
+    "prop-types": "15.5.10"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0-beta.5",
+    "react-native": "^0.49.1"
+  },
+  "devDependencies": {
+    "babel-jest": "22.4.4",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "22.4.4",
+    "react-test-renderer": "16.3.1"
+  },
+  "bugs": {
+    "url": "https://github.com/sozdayka/react-native-button-spinner/issues"
+  },
+  "homepage": "https://github.com/sozdayka/react-native-button-spinner#readme"
+}
