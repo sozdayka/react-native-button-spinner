@@ -14,36 +14,36 @@ import ButtonSpinner from 'react-native-button-spinner';
 ...
 // Your button
 
-<SozdaykaDemo>
+<ButtonSpinner>
     My text button 1
-</SozdaykaDemo>
+</ButtonSpinner>
 ```
 
 ```javascript
-<SozdaykaDemo
+<ButtonSpinner
     disabled={true}
     test={false}
 >
     My text button 2
-</SozdaykaDemo>
+</ButtonSpinner>
 ```
 
 ```javascript
-<SozdaykaDemo
+<ButtonSpinner
     style={{ backgroundColor: 'blue' }}
     disabled={true}
     opacityDisabled={0.1}
 >
     My text button 3
-</SozdaykaDemo>
+</ButtonSpinner>
 ```
 
 ```javascript
-<SozdaykaDemo
+<ButtonSpinner
     onPress={this.test1}
 >
     My text button 4
-</SozdaykaDemo>
+</ButtonSpinner>
 ```
 
 
