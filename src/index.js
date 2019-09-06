@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { 
-    View, 
-    Text, 
+import {
+    View,
+    Text,
     TouchableOpacity,
     ActivityIndicator
 } from 'react-native';
@@ -15,10 +15,15 @@ export default class ButtonSpinner extends Component {
             disabled: this.props.disabled,
             opacityStyle: this.props.disabled ? this.props.opacityDisabled : this.props.opacity
         }
+
+        // console.log(this.props)
+        // console.log(this.props.children)
+        // console.log(this.props.children.length)
+        // console.log(typeof this.props.children)
     }
 
     componentDidMount() {
-        
+
         if (!this.props.pendingRequest) {
             let startTime = setTimeout(() => {
                 alert('automaticTimeEnable ' + this.props.children)
@@ -33,48 +38,75 @@ export default class ButtonSpinner extends Component {
 
     }
 
+    _renderButtonContent() {
+        if (typeof this.props.children == 'object') {
+            return this.props.children
+        }
+        return <Text>{this.props.children}</Text>
+    }
+
+    _renderIndicator() {
+        switch (this.props.typeSpinner) {
+            case 'custom':
+                return this.props.customSpinnerComponent
+            default:
+                return (<ActivityIndicator style={this.props.styleSpinner.style} size={this.props.styleSpinner.size} color={this.props.styleSpinner.color} />)
+
+        }
+    }
+
+
     render() {
+        const style = Object.assign({}, this.props.styleButton, this.props.style);
+        // console.log(style);
         return (
             <TouchableOpacity
                 style={{
-                   
-                    ...this.props.style,
+
+                    ...style,
 
                     opacity: this.state.opacityStyle
                 }}
                 disabled={this.state.disabled}
-                onPress={async() => {
+                onPress={async () => {
 
                     console.log('start Loader::"')
                     this.setState({
-                        animation: true
+                        animation: true,
+                        disabled: true,
+                        opacityStyle: this.props.opacityDisabled
                     })
                     var myfunc = await this.props.onPress();
                     console.log(typeof myfunc)
                     this.setState({
-                        animation: false
+                        animation: false,
+                        disabled: false,
+                        opacityStyle: this.props.disabled ? this.props.opacityDisabled : this.props.opacity
                     })
 
                     // this.customOnPress()
                     // console.log(this.props)
                     // console.log(this.props.onPress)
                     // console.log(this.props.onPress.prototype)
-                   
+
                     // console.log(JSON.stringify(this.props.onPress.prototype.toString()))
                     // console.log(this.props.onPress.prototype.valueOf)
                     // this.initLoader();
                     // this.props.onPress.bind(this)();
-                    }
+                }
                 }
 
             >
                 {
                     this.state.animation ?
-                        <ActivityIndicator size="large" color="#0000ff" />
-                    :
+                        this._renderIndicator()
+                        :
                         null
                 }
-                <Text>{this.props.children}</Text>
+                {
+                    this._renderButtonContent()
+                }
+
             </TouchableOpacity>
         );
     }
@@ -89,17 +121,49 @@ ButtonSpinner.propTypes = {
     pendingRequest: PropTypes.bool,
     automaticTimeEnable: PropTypes.number,
 
-    style: PropTypes.object
+    style: PropTypes.object,
+
+    styleSpinner: PropTypes.object,
+    typeSpinner: PropTypes.string,
+    customSpinnerComponent: PropTypes.object
 }
 
 ButtonSpinner.defaultProps = {
     disabled: false,
     opacity: 1,
-    opacityDisabled: 0.75,
+    opacityDisabled: 0.35,
 
     pendingRequest: true,
     automaticTimeEnable: 0,
-    style: {
-        backgroundColor: 'red',
-    }
+    styleButton: {
+        alignItems: 'center',
+
+        backgroundColor: 'f5f5f5',
+        color: '#dddddd',
+
+        paddingVertical: 10,
+        paddingHorizontal: 25,
+
+        margin: 10,
+
+        borderColor: '#c2c2c2',
+        borderRadius: 5,
+        borderWidth: 1,
+
+        flex: 1,
+
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    styleSpinner: {
+        style: {
+            marginRight: 15,
+        },
+        color: '#a6a6a6', //'#dddddd',
+        size: 'small', // small | large
+    },
+    typeSpinner: 'defaut', // defaut | custom
+    positionSpinner: 'defaut', // 'left', 'right', 'centered-over-text', 'centered-without-text', 'left-without-left', 'right-without-right', 'above-text', 'below-text'
+    customSpinnerComponent: {}
+
 };
