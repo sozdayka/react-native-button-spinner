@@ -1,10 +1,17 @@
 {
   "name": "react-native-button-spinner",
-  "version": "0.0.5",
+  "version": "0.0.6",
 
   "description": "Button spinner",
   "keywords": [
-    "react-native"
+    "react-native",
+    "react-native-button-spinner",
+    "react-native-button-loading",
+    "react-native-spinner",
+    "react-native-button",
+    "react-native button with spinner",
+    "react-native button with loader",
+    "react-native button with loading"
   ],
   "author": "Igor Rosliakov",
   "license": "MIT",

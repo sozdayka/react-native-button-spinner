@@ -23,7 +23,7 @@ export default class ButtonSpinner extends Component {
     }
 
     componentDidMount() {
-
+        if(!this.props.children)
         if (!this.props.pendingRequest) {
             let startTime = setTimeout(() => {
                 alert('automaticTimeEnable ' + this.props.children)
@@ -131,6 +131,7 @@ ButtonSpinner.propTypes = {
 }
 
 ButtonSpinner.defaultProps = {
+    children: 'button text',
     disabled: false,
     opacity: 1,
     opacityDisabled: 0.35,

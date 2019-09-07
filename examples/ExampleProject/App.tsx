@@ -75,6 +75,7 @@ const App = () => {
           )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
+              <ButtonSpinner />
               <ButtonSpinner
                 disabled={true}
                 test={false}
