@@ -42,7 +42,7 @@ export default class ButtonSpinner extends Component {
         if (typeof this.props.children == 'object') {
             return this.props.children
         }
-        return <Text>{this.props.children}</Text>
+        return <Text style={this.props.styleText}>{this.props.children}</Text>
     }
 
     _renderIndicator() {
@@ -123,6 +123,8 @@ ButtonSpinner.propTypes = {
 
     style: PropTypes.object,
 
+    styleText: PropTypes.object,
+
     styleSpinner: PropTypes.object,
     typeSpinner: PropTypes.string,
     customSpinnerComponent: PropTypes.object
@@ -155,6 +157,9 @@ ButtonSpinner.defaultProps = {
         flexDirection: 'row',
         justifyContent: 'center',
     },
+    styleText: {
+        color: '#000000',
+    }, 
     styleSpinner: {
         style: {
             marginRight: 15,
