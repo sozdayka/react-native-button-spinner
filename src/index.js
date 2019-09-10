@@ -23,13 +23,14 @@ export default class ButtonSpinner extends Component {
     }
 
     componentDidMount() {
-        if(!this.props.children)
+        // if(!this.props.children)
         if (!this.props.pendingRequest) {
             let startTime = setTimeout(() => {
                 alert('automaticTimeEnable ' + this.props.children)
                 this.setState({
+                    animation: false,
                     disabled: false,
-                    opacityStyle: this.props.opacity
+                    opacityStyle: this.props.disabled ? this.props.opacityDisabled : this.props.opacity
                 })
                 // this.opacityStyle = this.state.disabled ? this.props.opacityDisabled : this.props.opacity;
                 clearTimeout(startTime)
@@ -127,7 +128,9 @@ ButtonSpinner.propTypes = {
 
     styleSpinner: PropTypes.object,
     typeSpinner: PropTypes.string,
-    customSpinnerComponent: PropTypes.object
+    customSpinnerComponent: PropTypes.object,
+
+    onPress: PropTypes.func
 }
 
 ButtonSpinner.defaultProps = {
@@ -170,6 +173,7 @@ ButtonSpinner.defaultProps = {
     },
     typeSpinner: 'defaut', // defaut | custom
     positionSpinner: 'defaut', // 'left', 'right', 'centered-over-text', 'centered-without-text', 'left-without-left', 'right-without-right', 'above-text', 'below-text'
-    customSpinnerComponent: {}
+    customSpinnerComponent: {},
 
+    onPress: () => {}
 };

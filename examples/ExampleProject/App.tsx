@@ -113,9 +113,12 @@ const App = () => {
                 My text4-4
 </ButtonSpinner>
               <ButtonSpinner
-                onPress={test5}
+                pendingRequest={false}
+                automaticTimeEnable={2500}
+
+                onPress={test4}
               >
-                My text4-5
+                My text4-5 2,5 sec
 </ButtonSpinner>
               <ButtonSpinner
                 onPress={signin}
