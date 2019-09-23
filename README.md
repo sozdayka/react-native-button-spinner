@@ -1,7 +1,8 @@
 # react-native-button-spinner [![npm version](https://badge.fury.io/js/react-native-button-spinner.svg)](https://badge.fury.io/js/react-native-button-spinner)
+[![npm](https://img.shields.io/npm/dw/react-native-button-spinner.svg)](https://www.npmjs.com/package/react-native-button-spinner)
 [![npm](https://img.shields.io/npm/dt/react-native-button-spinner.svg)](https://www.npmjs.com/package/react-native-button-spinner)
 [![Package Quality](http://npm.packagequality.com/shield/react-native-button-spinner.svg)](http://packagequality.com/#?package=react-native-button-spinner)
-[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/sozdayka/react-native-button-spinner/master/LICENSE)
 
 Buttons spinners plugin for react-native
 
@@ -12,11 +13,12 @@ npm i react-native-button-spinner --save
 ```
 
 ## Usage
+1) Import plugin
 ```javascript
 import ButtonSpinner from 'react-native-button-spinner';
-...
-// Your button
-
+```
+2) Add button component
+```javascript
 <ButtonSpinner>
     My text button 1
 </ButtonSpinner>
@@ -48,6 +50,30 @@ import ButtonSpinner from 'react-native-button-spinner';
     My text button 4
 </ButtonSpinner>
 ```
+## Demo & Example
+
+See demo code in [example project](https://github.com/sozdayka/react-native-button-spinner/tree/master/examples/ExampleProject "example project")
+
+![](https://i.ibb.co/wQ9fv23/ezgif-2-10b5703bd232.0gif)
+
+<details>
+  <summary>Default button</summary>
+ waiting update
+</details>
+<details>
+  <summary>Callback Value Function</summary>
+ waiting update
+</details>
+<details>
+  <summary>Position right-without-text</summary>
+ waiting update
+</details>
+<details>
+  <summary>Example Customize</summary>
+ waiting update
+</details>
+
+
 
 ## Props
 
