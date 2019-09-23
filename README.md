@@ -100,9 +100,9 @@ Text Button (use children or textButton)
 
 
 Example use children:
-   ```javascript 
-   <ButtonSpinner textButton={'Text Button'}/>
-   ```
+```javascript
+ <ButtonSpinner textButton={'Text Button'}/>
+```
 
 ---
 ### `disabled`
@@ -158,8 +158,9 @@ add additional styling for button component (optional)
 
 |        Type         | Default |
 | :-----------------: | :-----: |
-| View style (object) | see code below
-```json 
+| View style (object) | see code below |
+
+```javascript
 {
         alignItems: 'center',
         backgroundColor: 'f5f5f5',
