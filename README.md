@@ -49,28 +49,207 @@ import ButtonSpinner from 'react-native-button-spinner';
 </ButtonSpinner>
 ```
 
+## Props
+
+- [`children`](#children)
+- [`textButton`](#textButton)
+- [`disabled`](#disabled)
+- [`opacity`](#opacity)
+- [`opacityDisabled`](#opacityDisabled)
+- [`pendingRequest`](#pendingRequest)
+- [`automaticTimeEnable`](#automaticTimeEnable)
+- [`style`](#style)
+- [`styleText`](#styleText)
+- [`styleSpinner`](#styleSpinner)
+- [`typeSpinner`](#typeSpinner)
+- [`positionSpinner`](#positionSpinner)
+- [`customSpinnerComponent`](#customSpinnerComponent)
+- [`onPress`](#onPress)
 
 
+## Reference
+
+### `children`
+
+Text Button (use textButton or children)
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| React Native Component (`React.ReactElement`) |  none   |
 
 
-### Props
+Example use children:
+```javascript
+	<ButtonSpinner>My Default Button</ButtonSpinner>
+```
+OR
+```javascript
+	<ButtonSpinner>
+		<Text>My Text</Text>
+	</ButtonSpinner>
+```
 
-| Parameter              | Type                                                                                   | Required | description                                                                                                                                                                                                                          | default                                                   |
-| :--------------------- | :------------------------------------------------------------------------------------- | :------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------- |
-| textButton              | string                                                                                  | no      | Text Button (use textButton or children)                                                                                                                                                                                                                        |  `'Button Text'`                                                         |
-| children              | string                                                                                  | no      | Text Button  (use textButton or children)                                                                                                                                                                                                                       |  `''`                                                         |
-| disabled        | boolean                                                                                | no       | Disable button click                                                                                                                                                                                                                   | `false`            
-| opacity        | number                                                                                | no       | Default opacity button                                                                                                                                                                                                                    | `1`    
-| opacityDisabled        | number                                                                                | no       | Default opacity button when button disable                                                                                                                                                                                                                    | `0.35`    
-| pendingRequest        | boolean                                                                                | no       | Wait for function to complete                                                                                                                                                                                                                    | `true`      
-| automaticTimeEnable        | number                                                                                | no       | Time after which the button becomes active without waiting for the function to complete                                                                                                                                                                                                                    | `0`    
-| styleButton        | object  `{someKey: someValue}`                                                                              | no       | Style for button                                                                                                                                                                                                                    | `{ alignItems: 'center', backgroundColor: 'f5f5f5', color: '#dddddd', paddingVertical: 10, paddingHorizontal: 25, margin: 10, borderColor: '#c2c2c2', borderRadius: 5, borderWidth: 1, flex: 1,      flexDirection: 'row', justifyContent: 'center',}`    
-| styleText        | object  `{someKey: someValue}`                                                                              | no       | Style for button text if you not use custom component in button tag                                                                                                                                                                                                                    | `{ color: '#000000'}`
-| styleSpinner        | object  `{ style: { {someKey: someValue} }, color: string, size: string }`                                                                              | no       | Style for button spinner  if not use customSpinnerComponent                                                                                                                                                                                                                      | `{ style: { marginRight: 15 }, color: '#a6a6a6', size: 'small', // 'small' or 'large' }` | typeSpinner        | string  `defaut | custom`                                                                              | no       | Type button spinner loader. Size has this option: `'small'` or `'large'`                                                                                                                                                                                                                  | `defaut`
-| positionSpinner        | string                                                                        | no       | Position button spinner  if not use customSpinnerComponent. Position has this option: `'left'` `'right'` `'centered-over-text'` `'centered-without-text'` `'left-without-text'` `'right-without-text'` `'above-text'` `'below-text`'                                                                                                                                                                                                                  | `left`
-| customSpinnerComponent        |   `React.ReactElement<any>`                                                                              | no       | Custom button spinner component                                                                                                                                                                                                               | `''`
-| onPress               | function<br><br>`() => any`                                                           | no       | Your function for click   | `() => {}`    
+---
+### `textButton`
 
+Text Button (use children or textButton)
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| string |  My Button text   |
+
+
+Example use children:
+   ```javascript 
+   <ButtonSpinner textButton={'Text Button'}/>
+   ```
+
+---
+### `disabled`
+
+Disable state button click
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| boolean |  false   |
+
+---
+### `opacity`
+
+Default opacity button
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| number |  1   |
+
+---
+### `opacityDisabled`
+
+Default opacity button when disabled state
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| number |  0.35   |
+
+---
+### `pendingRequest`
+
+Waiting for function to complete
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| boolean |  true   |
+
+---
+### `automaticTimeEnable`
+
+Time after which the button becomes active without waiting for the function to complete after `number` second(s).
+
+Example set 2s. `automaticTimeEnable={2000}`
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| number |  0   |
+
+---
+### `style`
+
+add additional styling for button component (optional)
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| View style (object) | see code below
+```json 
+{
+        alignItems: 'center',
+        backgroundColor: 'f5f5f5',
+        color: '#dddddd',
+        paddingVertical: 10,
+        paddingHorizontal: 25,
+        margin: 10,
+        borderColor: '#c2c2c2',
+        borderRadius: 5,
+        borderWidth: 1,
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+    }
+```
+
+---
+### `styleText`
+
+add additional styling for button text (optional)
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| View style (object) |  `{ color: '#000000' }`   |
+
+---
+### `styleSpinner`
+
+Style for button spinner  if not use customSpinnerComponent
+
+size has option:
+
+- `small`
+
+- `large`
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| View style (object) | `{ style: { marginRight: 15, }, color: '#a6a6a6', size: 'small' }` |
+
+---
+### `typeSpinner`
+
+Type button spinner loader (optional):
+- `defaut`
+- `custom`
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| `defaut`, `custom` |  defaut   |
+
+---
+### `positionSpinner`
+
+Position button spinner (optional):
+- `left`
+- `right`
+- `centered-over-text`
+- `centered-without-text`
+- `left-without-text`
+- `right-without-text`
+- `above-text`
+- `below-text`
+
+Position button spinner  if not use customSpinnerComponent.
+
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| `left`, `right`, `centered-over-text`, `centered-without-text`, `left-without-text`, `right-without-text`, `above-text`, `below-text` |  left   |
+
+---
+### `customSpinnerComponent`
+
+Custom button spinner component
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| React Native Component (`React.ReactElement`) |  none   |
+
+---
+### `onPress`
+
+Your function for click
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| function |  `() => {}`   |
+
+---
 
 
 ## License

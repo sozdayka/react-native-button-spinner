@@ -158,6 +158,7 @@ const App = () => {
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Default button</Text>
               <ButtonSpinner />
+              <ButtonSpinner textButton={'Text Button'}/>
 
               <ButtonSpinner>My Default Button</ButtonSpinner>
               <View style={styles.sectionDescription}>
