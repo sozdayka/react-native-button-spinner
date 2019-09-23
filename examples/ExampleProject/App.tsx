@@ -19,6 +19,7 @@ import {
   View,
   Text,
   StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -29,35 +30,39 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import ButtonSpinner from 'react-native-button-spinner'
+import ButtonSpinner from 'react-native-button-spinner';
+
+import Icon from 'react-native-vector-icons/AntDesign';
+import { resolvePlugin } from '@babel/core';
+// import Icon from 'react-native-vector-icons/FontAwesome5';
+// import * as IconFeather from 'react-native-vector-icons/Feather';
+// import * as IconEvilIcons from 'react-native-vector-icons/EvilIcons';
 
 const App = () => {
   const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
 
 
-  const test1 = () => {
-    alert("::1")
-    //return 'kamikadze'
+  const functinReturnString = () => {
+    return 'kamikadze'
   }
-  const test2 = () => {
+  const functinReturnObject = () => {
     alert("::2")
     return { a: 'kamikadze' }
   }
-  const test3 = () => {
+  const functinReturnNumber = () => {
     alert("::3")
     return 12
   }
-  const test4 = () => {
+  const sendRequest = () => {
     return new Promise(() => { })
   }
-  const test5 = () => {
-    return setTimeout(() => {
-      return new Promise(() => { })
-    }
-      , 1500)
-  }
-  const signin = () => {
 
+  const awaitSendRequest = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("api ok")
+      }, 2500)
+    })
   }
 
   return (
@@ -68,79 +73,199 @@ const App = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <Header />
-          {!usingHermes ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes 111</Text>
-            </View>
-          )}
+
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <ButtonSpinner />
+              <Text style={styles.sectionTitle}>Example Customize</Text>
               <ButtonSpinner
-                disabled={true}
-                test={false}
-              >My text1</ButtonSpinner>
+                onPress={sendRequest}
+              >
+                <Icon name="qrcode" size={20} color="green" />
+                <Text style={{ color: 'green' }}>Get QR code</Text>
+              </ButtonSpinner>
+              <ButtonSpinner
+                onPress={sendRequest}
+              >
+                <Icon name="shoppingcart" size={20} color="#900" style={{ marginRight: 10 }} />
+                <Text>Add to cart</Text>
+              </ButtonSpinner>
+              <ButtonSpinner
+                positionSpinner={'centered-without-text'}
+                onPress={sendRequest}
+              >
+                <Icon name="hearto" size={20} color="#900" />
+              </ButtonSpinner>
 
-              <ButtonSpinner>
-                My text2
-</ButtonSpinner>
-
-              <ButtonSpinner
-                style={{ backgroundColor: 'blue' }}
-                styleText={{color: 'red'}}
-                disabled={true}
-                //opacityDisabled={0.1}
-              >My text3</ButtonSpinner>
-
-              <ButtonSpinner
-                onPress={test1}
-              >
-                My text4-1
-</ButtonSpinner>
-              <ButtonSpinner
-                onPress={test2}
-              >
-                My text4-2
-</ButtonSpinner>
-              <ButtonSpinner
-                onPress={test3}
-              >
-                My text4-3
-</ButtonSpinner>
-              <ButtonSpinner
-                onPress={test4}
-              >
-                My text4-4
-</ButtonSpinner>
-              <ButtonSpinner
-                pendingRequest={false}
-                automaticTimeEnable={2500}
-
-                onPress={test4}
-              >
-                My text4-5 2,5 sec
-</ButtonSpinner>
-              <ButtonSpinner
-                onPress={signin}
-              >
-                My text4-6 login
-</ButtonSpinner>
+            </View>
 
 
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Position Spinner</Text>
               <ButtonSpinner
-                onPress={signin}
+                onPress={sendRequest}
               >
-                <Text style={{ color: 'orange' }}>My text4-7 login</Text>
+                <Text>Position Left</Text>
               </ButtonSpinner>
 
               <ButtonSpinner
-                // onPress={signin}
-                typeSpinner='custom'
-                customSpinnerComponent={<Text style={{ color: 'red' }}>Loading</Text>}
+                positionSpinner={'right'}
+                onPress={sendRequest}
               >
-                <Text style={{ color: 'green' }}>My text4-8 login</Text>
+                <Text>Position right</Text>
+              </ButtonSpinner>
+
+              <ButtonSpinner
+                positionSpinner={'centered-over-text'}
+                onPress={sendRequest}
+              >
+                <Text>Position centered-over-text</Text>
+              </ButtonSpinner>
+
+              <ButtonSpinner
+                positionSpinner={'centered-without-text'}
+                onPress={sendRequest}
+              >
+                <Text>Position centered-without-text</Text>
+              </ButtonSpinner>
+
+              <ButtonSpinner
+                positionSpinner={'left-without-text'}
+                onPress={sendRequest}
+              >
+                <Text>Position left-without-text</Text>
+              </ButtonSpinner>
+              <ButtonSpinner
+                positionSpinner={'right-without-text'}
+                onPress={sendRequest}
+              >
+                <Text>Position right-without-text</Text>
+              </ButtonSpinner>
+
+              <ButtonSpinner
+                positionSpinner={'above-text'}
+                onPress={sendRequest}
+              >
+                <Text>Position above-text</Text>
+              </ButtonSpinner>
+              <ButtonSpinner
+                positionSpinner={'below-text'}
+                onPress={sendRequest}
+              >
+                <Text>Position below-text</Text>
               </ButtonSpinner>
             </View>
+
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Default button</Text>
+              <ButtonSpinner />
+
+              <ButtonSpinner>My Default Button</ButtonSpinner>
+              <View style={styles.sectionDescription}>
+                <Text>Disable button</Text>
+                <ButtonSpinner
+                  disabled={true}
+                >Default Disable btn</ButtonSpinner>
+
+                <ButtonSpinner
+                  style={{ backgroundColor: 'blue' }}
+                  styleText={{ color: 'red' }}
+                  disabled={true}
+                //opacityDisabled={0.1}
+                >Customize Disable btn</ButtonSpinner>
+              </View>
+            </View>
+
+
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Callback Value Function</Text>
+              <ButtonSpinner
+                onPress={functinReturnString}
+              >
+                My functin return string
+              </ButtonSpinner>
+              <ButtonSpinner
+                onPress={functinReturnObject}
+              >
+                My functin return object
+              </ButtonSpinner>
+              <ButtonSpinner
+                onPress={functinReturnNumber}
+              >
+                My functin return number
+              </ButtonSpinner>
+              {/* //sectionDescription */}
+
+              <ButtonSpinner
+                onPress={sendRequest}
+              >
+                My functin use Promise
+              </ButtonSpinner>
+              <ButtonSpinner
+                onPress={awaitSendRequest}
+              >
+                Await Promise Resolve
+              </ButtonSpinner>
+
+
+              <ButtonSpinner
+                onPress={awaitSendRequest}
+              >
+                <Text style={{ color: 'orange' }}>Await response</Text>
+              </ButtonSpinner>
+              <View style={styles.sectionDescription}>
+                <Text>Custom spinner</Text>
+                <ButtonSpinner
+                  onPress={awaitSendRequest}
+                  typeSpinner='custom'
+                  customSpinnerComponent={<Text style={{ color: 'red' }}>Loading</Text>}
+                >
+                  <Text style={{ color: 'green' }}>Custom spinner</Text>
+                </ButtonSpinner>
+              </View>
+              <View style={styles.sectionDescription}>
+                <Text>Enable btn after 10s.</Text>
+                <ButtonSpinner
+                  disabled={true}
+                  onPress={sendRequest}
+                  pendingRequest={false}
+                  automaticTimeEnable={10000}
+                >
+                  <Text>Disabled btn and enable</Text>
+                </ButtonSpinner>
+              </View>
+              <View style={styles.sectionDescription}>
+                <Text>NOT wait response and enable btn after 4s.</Text>
+                <ButtonSpinner
+                  onPress={sendRequest}
+                  pendingRequest={false}
+                  automaticTimeEnable={4000}
+                  typeSpinner='custom'
+                  customSpinnerComponent={<Text style={{ color: 'red' }}>Loading</Text>}
+                >
+                  <Text style={{ color: 'green' }}>Custom spinner</Text>
+                </ButtonSpinner>
+              </View>
+            </View>
+
+
+
+
+
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>More example</Text>
+
+            </View>
+
+
+            <View style={styles.sectionContainer}>
+
+
+
+
+
+
+            </View>
+
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Learn More</Text>
               <Text style={styles.sectionDescription}>

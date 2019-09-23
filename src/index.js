@@ -25,25 +25,29 @@ export default class ButtonSpinner extends Component {
     componentDidMount() {
         // if(!this.props.children)
         if (!this.props.pendingRequest) {
-            let startTime = setTimeout(() => {
-                alert('automaticTimeEnable ' + this.props.children)
-                this.setState({
-                    animation: false,
-                    disabled: false,
-                    opacityStyle: this.props.disabled ? this.props.opacityDisabled : this.props.opacity
-                })
-                // this.opacityStyle = this.state.disabled ? this.props.opacityDisabled : this.props.opacity;
-                clearTimeout(startTime)
-            }, this.props.automaticTimeEnable)
+            this._automaticTimeEnable();
         }
-
     }
 
+    _automaticTimeEnable() {
+        let startTime = setTimeout(() => {
+            this.setState({
+                animation: false,
+                disabled: false,
+                opacityStyle: this.props.opacity
+            })
+            clearTimeout(startTime)
+        }, this.props.automaticTimeEnable)
+
+    }
     _renderButtonContent() {
         if (typeof this.props.children == 'object') {
             return this.props.children
         }
-        return <Text style={this.props.styleText}>{this.props.children}</Text>
+        if (this.props.children) {
+            return <Text style={this.props.styleText}>{this.props.children}</Text>
+        }
+        return <Text style={this.props.styleText}>{this.props.textButton}</Text>
     }
 
     _renderIndicator() {
@@ -51,14 +55,73 @@ export default class ButtonSpinner extends Component {
             case 'custom':
                 return this.props.customSpinnerComponent
             default:
-                return (<ActivityIndicator style={this.props.styleSpinner.style} size={this.props.styleSpinner.size} color={this.props.styleSpinner.color} />)
+                const _styleSpinner = this.props.positionSpinner === 'centered-over-text' ? Object.assign({}, this.props.styleSpinner.style, { position: 'absolute' }) : this.props.styleSpinner.style;
+                return (<ActivityIndicator style={_styleSpinner} size={this.props.styleSpinner.size} color={this.props.styleSpinner.color} />)
 
+        }
+    }
+
+    _positionSpinnerWithText() {
+        if (this.state.animation) {
+            if (this.props.positionSpinner === "centered-without-text" ||
+                this.props.positionSpinner === "left-without-text" ||
+                this.props.positionSpinner === "right-without-text") {
+                return false
+            }
+        }
+        return true
+    }
+
+    _getStyleButton() {
+        switch (this.props.positionSpinner) {
+            case 'right':
+                return {
+                    flex: 1,
+                    flexDirection: 'row-reverse',
+                    justifyContent: 'center',
+                    alignItems: 'stretch',
+                }
+            case 'above-text':
+                return {
+                    flexDirection: 'column-reverse',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }
+            case 'below-text':
+                return {
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }
+
+            case 'centered-without-text':
+                return {
+
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }
+            case 'left-without-text':
+                return {
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                }
+            case 'right-without-text':
+                return {
+                    flexDirection: 'row-reverse',
+                    justifyContent: 'flex-start',
+                }
+
+            default:
+                return {}
         }
     }
 
 
     render() {
-        const style = Object.assign({}, this.props.styleButton, this.props.style);
+        // positionSpinner
+        const _styleButton = this.state.animation ? Object.assign({}, this.props.styleButton, this._getStyleButton()) : this.props.styleButton;
+        const style = Object.assign({}, _styleButton, this.props.style);
         // console.log(style);
         return (
             <TouchableOpacity
@@ -77,6 +140,10 @@ export default class ButtonSpinner extends Component {
                         disabled: true,
                         opacityStyle: this.props.opacityDisabled
                     })
+
+                    if (!this.props.pendingRequest) {
+                        this._automaticTimeEnable();
+                    }
                     var myfunc = await this.props.onPress();
                     console.log(typeof myfunc)
                     this.setState({
@@ -105,7 +172,10 @@ export default class ButtonSpinner extends Component {
                         null
                 }
                 {
-                    this._renderButtonContent()
+                    this._positionSpinnerWithText() ?
+                        this._renderButtonContent()
+                        :
+                        null
                 }
 
             </TouchableOpacity>
@@ -115,13 +185,14 @@ export default class ButtonSpinner extends Component {
 }
 
 ButtonSpinner.propTypes = {
+    children: PropTypes.any,
+    textButton: PropTypes.string,
     disabled: PropTypes.bool,
     opacity: PropTypes.number,
     opacityDisabled: PropTypes.number,
 
     pendingRequest: PropTypes.bool,
     automaticTimeEnable: PropTypes.number,
-
     style: PropTypes.object,
 
     styleText: PropTypes.object,
@@ -134,10 +205,11 @@ ButtonSpinner.propTypes = {
 }
 
 ButtonSpinner.defaultProps = {
-    children: 'button text',
+    children: '',
+    textButton: 'My Button text',
     disabled: false,
     opacity: 1,
-    opacityDisabled: 0.35,
+    opacityDisabled: 0.55,
 
     pendingRequest: true,
     automaticTimeEnable: 0,
@@ -163,7 +235,7 @@ ButtonSpinner.defaultProps = {
     },
     styleText: {
         color: '#000000',
-    }, 
+    },
     styleSpinner: {
         style: {
             marginRight: 15,
@@ -172,8 +244,8 @@ ButtonSpinner.defaultProps = {
         size: 'small', // small | large
     },
     typeSpinner: 'defaut', // defaut | custom
-    positionSpinner: 'defaut', // 'left', 'right', 'centered-over-text', 'centered-without-text', 'left-without-left', 'right-without-right', 'above-text', 'below-text'
+    positionSpinner: 'left', // 'left', 'right', 'centered-over-text', 'centered-without-text', 'left-without-text', 'right-without-text', 'above-text', 'below-text'
     customSpinnerComponent: {},
 
-    onPress: () => {}
+    onPress: () => { }
 };
