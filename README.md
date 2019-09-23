@@ -2,6 +2,7 @@
 [![npm](https://img.shields.io/npm/dw/react-native-button-spinner.svg)](https://www.npmjs.com/package/react-native-button-spinner)
 [![npm](https://img.shields.io/npm/dt/react-native-button-spinner.svg)](https://www.npmjs.com/package/react-native-button-spinner)
 [![Package Quality](http://npm.packagequality.com/shield/react-native-button-spinner.svg)](http://packagequality.com/#?package=react-native-button-spinner)
+![Platform - Android and iOS](https://img.shields.io/badge/platform-Android%20%7C%20iOS-yellow.svg)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/sozdayka/react-native-button-spinner/master/LICENSE)
 
 This is a Javascript button indicator (spinner) plugin for react-native. Which will allow you to configure the indicator under or lock the button. So the plug-in stops the indicator after completing the function or interrupting it after a certain time.
