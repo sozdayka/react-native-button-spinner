@@ -52,19 +52,19 @@ import ButtonSpinner from 'react-native-button-spinner';
 ## Props
 
 - [`children`](#children)
-- [`textButton`](#textButton)
+- [`textButton`](#textbutton)
 - [`disabled`](#disabled)
 - [`opacity`](#opacity)
-- [`opacityDisabled`](#opacityDisabled)
-- [`pendingRequest`](#pendingRequest)
-- [`automaticTimeEnable`](#automaticTimeEnable)
+- [`opacityDisabled`](#opacitydisabled)
+- [`pendingRequest`](#pendingrequest)
+- [`automaticTimeEnable`](#automatictimeEnable)
 - [`style`](#style)
-- [`styleText`](#styleText)
-- [`styleSpinner`](#styleSpinner)
-- [`typeSpinner`](#typeSpinner)
-- [`positionSpinner`](#positionSpinner)
-- [`customSpinnerComponent`](#customSpinnerComponent)
-- [`onPress`](#onPress)
+- [`styleText`](#styletext)
+- [`styleSpinner`](#stylespinner)
+- [`typeSpinner`](#typespinner)
+- [`positionSpinner`](#positionspinner)
+- [`customSpinnerComponent`](#customSpinnersomponent)
+- [`onPress`](#onpress)
 
 
 ## Reference
