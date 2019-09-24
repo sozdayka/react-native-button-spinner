@@ -5,7 +5,7 @@
 ![Platform - Android and iOS](https://img.shields.io/badge/platform-Android%20%7C%20iOS-yellow.svg)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/sozdayka/react-native-button-spinner/master/LICENSE)
 
-This is a Javascript button indicator (spinner) plugin for react-native. Which will allow you to configure the indicator under or lock the button. So the plug-in stops the indicator after completing the function or interrupting it after a certain time.
+This is a Javascript button indicator (spinner) plugin for react-native. Which will allow you to customize and disable the button. So the plug-in stops the indicator after completing the function or interrupting it after a certain time.
 
 ## Getting Started
 
@@ -52,7 +52,7 @@ import ButtonSpinner from 'react-native-button-spinner';
 ```
 ## Demo & Example
 
-See full demo code in [example project](https://github.com/sozdayka/react-native-button-spinner/tree/master/examples/ExampleProject "example project")
+See the full source demo code in [example project](https://github.com/sozdayka/react-native-button-spinner/tree/master/examples/ExampleProject "example project")
 
 
 ![](https://i.ibb.co/wQ9fv23/ezgif-2-10b5703bd232.gif)
@@ -293,7 +293,7 @@ See full demo code in [example project](https://github.com/sozdayka/react-native
 
 </details>
 <details>
-  <summary>All example function from demo</summary>
+  <summary>All the examples of functions from the demo</summary>
 
 ```javascript
   const functinReturnString = () => {
@@ -363,7 +363,7 @@ Text Button (use textButton or children)
 | React Native Component (`React.ReactElement`) |  none   |
 
 
-Example use children:
+How to use props children:
 ```javascript
 	<ButtonSpinner>My Default Button</ButtonSpinner>
 ```
@@ -384,7 +384,7 @@ Text Button (use children or textButton)
 | string |  My Button text   |
 
 
-Example use children:
+How to use props children:
 ```javascript
  <ButtonSpinner textButton={'Text Button'}/>
 ```
@@ -392,7 +392,7 @@ Example use children:
 ---
 ### `disabled`
 
-Disable state button click
+Disabled button
 
 |        Type         | Default |
 | :-----------------: | :-----: |
@@ -410,7 +410,7 @@ Default opacity button
 ---
 ### `opacityDisabled`
 
-Default opacity button when disabled state
+Default opacity button when the state is disabled
 
 |        Type         | Default |
 | :-----------------: | :-----: |
@@ -474,9 +474,9 @@ add additional styling for button text (optional)
 ---
 ### `styleSpinner`
 
-Style for button spinner  if not use customSpinnerComponent
+Style for button spinner  if the customSpinnerComponent is not used
 
-size has option:
+the sizes have the following options:
 
 - `small`
 
@@ -489,7 +489,7 @@ size has option:
 ---
 ### `typeSpinner`
 
-Type button spinner loader (optional):
+The types of the spinner (optional):
 - `defaut`
 - `custom`
 
@@ -500,7 +500,7 @@ Type button spinner loader (optional):
 ---
 ### `positionSpinner`
 
-Position button spinner (optional):
+The positions of the button spinner (optional):
 - `left`
 - `right`
 - `centered-over-text`
@@ -510,7 +510,7 @@ Position button spinner (optional):
 - `above-text`
 - `below-text`
 
-Position button spinner  if not use customSpinnerComponent.
+The positions of the button spinner  if the customSpinnerComponent is not used.
 
 
 |        Type         | Default |
@@ -542,3 +542,6 @@ Your function for click
 This project is licensed under the MIT License - see the LICENSE file for details
 
 Copyright (c) 2019 Igor Rosliakov
+
+
+
