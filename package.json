@@ -1,6 +1,6 @@
 {
   "name": "react-native-button-spinner",
-  "version": "0.1.3",
+  "version": "0.1.4",
 
   "description": "This is a Javascript button indicator (spinner) plugin for react-native. Which will allow you to configure the indicator under or lock the button. So the plug-in stops the indicator after completing the function or interrupting it after a certain time.",
   "keywords": [
