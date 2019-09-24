@@ -330,7 +330,9 @@ See full demo code in [example project](https://github.com/sozdayka/react-native
 ```
 </details>
 
+[![](https://lh3.googleusercontent.com/7l-bQADRV4PzxAz_9GH2aozV3jkHqdlUJbOsIf4Eu_bazCi6UH_UyiAeKer2-s9GafI)](https://snack.expo.io/@sozdayka/react-native-button-spinner)
 
+[![](https://i.ibb.co/x2y22pR/download.png)](https://snack.expo.io/@sozdayka/react-native-button-spinner)
 
 ## Props
 
@@ -340,13 +342,13 @@ See full demo code in [example project](https://github.com/sozdayka/react-native
 - [`opacity`](#opacity)
 - [`opacityDisabled`](#opacitydisabled)
 - [`pendingRequest`](#pendingrequest)
-- [`automaticTimeEnable`](#automatictimeEnable)
+- [`automaticTimeEnable`](#automatictimeenable)
 - [`style`](#style)
 - [`styleText`](#styletext)
 - [`styleSpinner`](#stylespinner)
 - [`typeSpinner`](#typespinner)
 - [`positionSpinner`](#positionspinner)
-- [`customSpinnerComponent`](#customSpinnersomponent)
+- [`customSpinnerComponent`](#customcpinnercomponent)
 - [`onPress`](#onpress)
 
 
